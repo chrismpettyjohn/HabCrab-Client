@@ -1,7 +1,7 @@
 {
-    "socket.url": "wss://emu.habtwist.co.uk/websocket",
-    "asset.url": "https://swfs.habtwist.co.uk/",
-    "flash.asset.url": "https://swfs.habtwist.co.uk/",
+    "socket.url": "wss://emu.habcrab.com",
+    "asset.url": "https://swfs.habcrab.com/",
+    "flash.asset.url": "https://swfs.habcrab.com/",
     "image.library.url": "${flash.asset.url}/c_images/",
     "hof.furni.url": "${flash.asset.url}/bundled/furniture",
     "images.url": "${asset.url}/images",

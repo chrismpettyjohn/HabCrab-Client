@@ -1,9 +1,9 @@
 {
     "image.library.notifications.url": "${image.library.url}notifications/%image%.png",
     "achievements.images.url": "${image.library.url}Quests/%image%.png",
-    "camera.url": "https://habtwist.co.uk/client/camera",
+    "camera.url": "https://camera.habcrab.com",
     "thumbnails.url": "${camera.url}/thumbnails/%thumbnail%.png",
-    "url.prefix": "https://habtwist.co.uk",
+    "url.prefix": "https://habcrab.com",
     "habbopages.url": "${url.prefix}/",
     "group.homepage.url": "${url.prefix}/groups/%groupid%/id",
     "guide.help.alpha.groupid": 0,
