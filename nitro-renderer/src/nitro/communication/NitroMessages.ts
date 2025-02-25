@@ -919,8 +919,8 @@ import {
   TrackerDeleteComposer,
   TrackerUpdateComposer,
   TrackerCreateComposer,
+  TrackerGetByIdComposer,
 } from "./messages";
-import { TrackerGetByIdComposer } from "./messages/outgoing/crab/tracker/TrackerGetByIdcomposer";
 
 export class NitroMessages implements IMessageConfiguration {
   private _events: Map<number, Function>;
