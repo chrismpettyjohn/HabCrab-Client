@@ -61,6 +61,7 @@ export function ModToolsQuestView() {
         if (parts.length === 3) {
           switch (parts[2]) {
             case "toggle":
+              setPath("mod-tools/manage-quests/quests");
               setVisible((_) => !_);
               setView(<QuestsGrid />);
               return;
