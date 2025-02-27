@@ -15,7 +15,7 @@ export function QuestsGrid() {
       </div>
       <div className="mod-tools-quests">
         {quests.map((_) => (
-          <div className="quest" key={`quest_${_.id}`}>
+          <div className="quest" key={`quest_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/quests/view/${_.id}`)}>
             <Text bold fontSize={4}>
               #{_.id} {_.title}
             </Text>
