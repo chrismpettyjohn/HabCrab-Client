@@ -40,24 +40,17 @@
 }
 
 .nitro-catalog-navigation-grid-container {
-    border-color: #b6bec5 !important;
-    background-color: #cdd3d9;
-    border: 2px solid;
+    background-color: $primary;
 
     .nitro-catalog-navigation-section {
         display: grid;
-
-        .nitro-catalog-navigation-section {
-            padding-left: 5px;
-            border-left: 2px solid #b6bec5;
-        }
     }
 
     .layout-grid-item {
         font-size: $font-size-sm;
         height: 23px !important;
         border-color: unset !important;
-        background-color: #cdd3d9;
+        background-color: $primary;
         border: 0 !important;
         padding: 1px 3px;
 

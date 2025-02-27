@@ -70,8 +70,9 @@ $colors: (
 // scss-docs-end colors-map
 
 // scss-docs-start theme-color-variables
-$primary:       #1E7295 !default;
-$secondary:     #185D79 !default;
+$brand:         #F55040;
+$primary:       rgb(44, 47, 51, .85) !default;
+$secondary:     rgb(55, 58, 63)  !default;
 $tertiary:      #2DABC2 !default;
 $quaternary:    #2B91A7 !default;
 $mirage:        #131e25 !default;
