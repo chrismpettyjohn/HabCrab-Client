@@ -8,12 +8,15 @@ import { NavigatorSearchResultItemView } from "./NavigatorSearchResultItemView";
 
 export interface NavigatorSearchResultViewProps extends AutoGridProps {
   searchResult: NavigatorSearchResultList;
+  alwaysExtended?: boolean;
 }
 
 export const NavigatorSearchResultView: FC<NavigatorSearchResultViewProps> = (props) => {
   const { searchResult = null, ...rest } = props;
-  const [isExtended, setIsExtended] = useState(true);
+  const [extended, setExtended] = useState(true);
   const [displayMode, setDisplayMode] = useState<number>(0);
+
+  const isExtended = extended || props.alwaysExtended;
 
   const { topLevelContext = null } = useNavigator();
 
@@ -43,19 +46,27 @@ export const NavigatorSearchResultView: FC<NavigatorSearchResultViewProps> = (pr
   useEffect(() => {
     if (!searchResult) return;
 
-    setIsExtended(!searchResult.closed);
+    setExtended(!searchResult.closed);
 
     setDisplayMode(searchResult.mode);
   }, [searchResult]);
 
-  const gridHasTwoColumns = displayMode >= NavigatorSearchResultViewDisplayMode.THUMBNAILS;
+  const gridHasTwoColumns = props.alwaysExtended || displayMode >= NavigatorSearchResultViewDisplayMode.THUMBNAILS;
+
+  if (props.alwaysExtended && props.searchResult.code === "official-root") {
+    return null;
+  }
 
   return (
     <Column className=" rounded border border-muted" gap={0}>
       <Flex fullWidth alignItems="center" justifyContent="between" className="px-2 py-1">
-        <Flex grow pointer alignItems="center" gap={1} onClick={(event) => setIsExtended((prevValue) => !prevValue)}>
-          {isExtended && <FaMinus className="text-secondary fa-icon" />}
-          {!isExtended && <FaPlus className="text-secondary fa-icon" />}
+        <Flex grow pointer alignItems="center" gap={1} onClick={() => (!props.alwaysExtended ? setExtended((prevValue) => !prevValue) : null)}>
+          {!props.alwaysExtended && (
+            <>
+              {isExtended && <FaMinus className="text-secondary fa-icon" />}
+              {!isExtended && <FaPlus className="text-secondary fa-icon" />}
+            </>
+          )}
           <Text>{LocalizeText(getResultTitle())}</Text>
         </Flex>
         <Flex gap={2}>
@@ -64,8 +75,8 @@ export const NavigatorSearchResultView: FC<NavigatorSearchResultViewProps> = (pr
           {searchResult.action > 0 && searchResult.action === 1 && <FaWindowMaximize className="text-secondary fa-icon" onClick={showMore} />}
           {searchResult.action > 0 && searchResult.action !== 1 && <FaWindowRestore className="text-secondary fa-icon" onClick={showMore} />}
         </Flex>
-      </Flex>{" "}
-      {isExtended && (
+      </Flex>
+      {extended && (
         <>
           {gridHasTwoColumns ? (
             <AutoGrid columnCount={3} {...rest} columnMinWidth={110} columnMinHeight={130} className="mx-2">
@@ -80,35 +91,5 @@ export const NavigatorSearchResultView: FC<NavigatorSearchResultViewProps> = (pr
         </>
       )}
     </Column>
-    // <div className="nitro-navigator-search-result  rounded mb-2 overflow-hidden">
-    //     <div className="d-flex flex-column">
-    //         <div className="d-flex align-items-center px-2 py-1 text-black">
-    //             <i className={ 'text-secondary fas ' + (isExtended ? 'fa-minus' : 'fa-plus') } onClick={ toggleExtended }></i>
-    //             <div className="ms-2 flex-grow-1">{ LocalizeText(getResultTitle()) }</div>
-    //             <i className={ 'text-secondary fas ' + classNames({ 'fa-bars': (displayMode === NavigatorSearchResultViewDisplayMode.LIST), 'fa-th': displayMode >= NavigatorSearchResultViewDisplayMode.THUMBNAILS })}></i>
-    //         </div>
-    //         { isExtended &&
-    //             <div className={ 'nitro-navigator-result-list row row-cols-' + classNames({ '1': (displayMode === NavigatorSearchResultViewDisplayMode.LIST), '2': (displayMode >= NavigatorSearchResultViewDisplayMode.THUMBNAILS) }) }>
-    //                 { searchResult.rooms.length > 0 && searchResult.rooms.map((room, index) =>
-    //                     {
-    //                         return <NavigatorSearchResultItemView key={ index } roomData={ room } />
-    //                     }) }
-    //             </div> }
-    //     </div>
-    // </div>
-    // <div className="nitro-navigator-result-list p-2">
-    //     <div className="d-flex mb-2 small cursor-pointer" onClick={ toggleList }>
-    //         <i className={ "fas " + classNames({ 'fa-plus': !isExtended, 'fa-minus': isExtended })}></i>
-    //         <div className="align-self-center w-100 ml-2">{ LocalizeText(getListCode()) }</div>
-    //         <i className={ "fas " + classNames({ 'fa-bars': displayMode === NavigatorResultListViewDisplayMode.LIST, 'fa-th': displayMode >= NavigatorResultListViewDisplayMode.THUMBNAILS })} onClick={ toggleDisplayMode }></i>
-    //     </div>
-    //     <div className={ 'row mr-n2 row-cols-' + classNames({ '1': displayMode === NavigatorResultListViewDisplayMode.LIST, '2': displayMode >= NavigatorResultListViewDisplayMode.THUMBNAILS }) }>
-    //         { isExtended && resultList && resultList.rooms.map((room, index) =>
-    //             {
-    //                 return <NavigatorResultView key={ index } result={ room } />
-    //             })
-    //         }
-    //     </div>
-    // </div>
   );
 };
