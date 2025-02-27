@@ -24,8 +24,8 @@
 
 .nitro-infostand-container {
     position: absolute;
-    right: 10px;
-    bottom: $toolbar-height + 10px;
+    right: 20px;
+    bottom: $toolbar-height + 40px;
     pointer-events: none;
     z-index: $infostand-zindex;
     color: $white;
@@ -36,7 +36,7 @@
         max-width: 190px;
         z-index: $infostand-zindex;
         pointer-events: auto;
-        background: rgba($dark, .95);
+        background: $primary;
         box-shadow: inset 0px 5px lighten(rgba($dark, .6), 2.5), inset 0 -4px darken(rgba($dark, .6), 4);
 
         .form-control-sm {
