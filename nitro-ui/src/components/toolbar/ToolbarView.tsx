@@ -107,7 +107,7 @@ export const ToolbarView: FC<{ isInRoom: boolean }> = (props) => {
             </Flex>
           </Flex>
           <div id="toolbar-chat-input-container" />
-          <Flex alignItems="center" gap={2} className="nitro-toolbar-widget">
+          <Flex alignItems="center" gap={2} className="nitro-toolbar-widget nitro-toolbar-friends">
             <Base id="toolbar-friend-bar-container" className="d-none d-lg-block" />
             <Flex gap={2}>
               {(iconState === MessengerIconState.SHOW || iconState === MessengerIconState.UNREAD) && (
