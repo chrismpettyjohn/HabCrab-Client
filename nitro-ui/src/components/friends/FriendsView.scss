@@ -112,36 +112,32 @@
     }
 
     .friend-bar-item {
-        width: 130px;
+        align-items: center;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        height: $toolbar-height;
+        overflow: hidden;
         margin: 0 3px;
         z-index: 0;
         position: relative;
-        padding-left:38px;
+        padding-bottom: 4px;
         text-align: left;
+        width: 60px;
+
+        &:hover {
+            border-color: $brand;
+        }
 
         &.friend-bar-item-active {
             margin-bottom:21px;
         }
 
-        .friend-bar-item-head {
-            &.avatar {
-                top: -30px;
-                left: -30px;
-            }
-            &.group {
-                top: -5px;
-                left: -5px;
-            }
-
-            pointer-events: none;
-        }
-
         &.friend-bar-search {
             .friend-bar-item-head {
-                top: -3px;
-                left: 5px;
-                width: 31px;
-                height: 34px;
+                width: 30px;
+                height: 30px;
                 background-image: url('@/assets/images/toolbar/friend-search.png');
             }
         }

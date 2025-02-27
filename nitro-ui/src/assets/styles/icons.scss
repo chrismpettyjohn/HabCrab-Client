@@ -147,10 +147,12 @@
         height: 21px;
     }
 
-    &.icon-habbo {
-        background-image: url('@/assets/images/toolbar/icons/habbo.png');
-        width: 28px;
-        height: 28px;
+    &.icon-crab {
+        background-image: url('@/assets/images/toolbar/icons/crab.png');
+        background-size: contain;
+        image-rendering: pixelated;
+        height: 60px;
+        width: 60px;
     }
 
     &.icon-camera {

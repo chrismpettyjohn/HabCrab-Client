@@ -79,6 +79,9 @@ export const ToolbarView: FC<{ isInRoom: boolean }> = (props) => {
       </TransitionAnimation>
       <div className="nitro-toolbar">
         <Flex alignItems="center" justifyContent="between" gap={2} className="nitro-toolbar-container">
+          <Flex alignItems="center" justifyContent="center" style={{ width: 100 }}>
+            <Base pointer className="navigation-item icon icon-crab" onClick={(event) => VisitDesktop()} />
+          </Flex>
           <Flex gap={2} alignItems="center" className="nitro-toolbar-widget">
             <Flex alignItems="center" gap={2}>
               <Flex
@@ -90,7 +93,6 @@ export const ToolbarView: FC<{ isInRoom: boolean }> = (props) => {
                 <LayoutAvatarImageView figure={userFigure} direction={2} position="absolute" />
                 {getTotalUnseen > 0 && <LayoutItemCountView count={getTotalUnseen} />}
               </Flex>
-              {isInRoom && <Base pointer className="navigation-item icon icon-habbo" onClick={(event) => VisitDesktop()} />}
               {!isInRoom && <Base pointer className="navigation-item icon icon-house" onClick={(event) => CreateLinkEvent("navigator/goto/home")} />}
               <Base pointer className="navigation-item icon icon-rooms" onClick={(event) => CreateLinkEvent("navigator/toggle")} />
               {GetConfiguration("game.center.enabled") && (
@@ -106,10 +108,8 @@ export const ToolbarView: FC<{ isInRoom: boolean }> = (props) => {
           </Flex>
           <div id="toolbar-chat-input-container" />
           <Flex alignItems="center" gap={2} className="nitro-toolbar-widget">
+            <Base id="toolbar-friend-bar-container" className="d-none d-lg-block" />
             <Flex gap={2}>
-              <Base pointer className="navigation-item icon icon-friendall" onClick={(event) => CreateLinkEvent("friends/toggle")}>
-                {requests.length > 0 && <LayoutItemCountView count={requests.length} />}
-              </Base>
               {(iconState === MessengerIconState.SHOW || iconState === MessengerIconState.UNREAD) && (
                 <Base
                   pointer
@@ -118,7 +118,6 @@ export const ToolbarView: FC<{ isInRoom: boolean }> = (props) => {
                 />
               )}
             </Flex>
-            <Base id="toolbar-friend-bar-container" className="d-none d-lg-block" />
           </Flex>
         </Flex>
       </div>

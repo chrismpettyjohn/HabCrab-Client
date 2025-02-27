@@ -100,3 +100,10 @@ $nitro-calendar-height: 400px;
 
 @import './common';
 @import './components';
+
+.btn-primary {
+    background: $primary;
+    border: none;
+    box-shadow: none;
+    padding: 8px;
+}
