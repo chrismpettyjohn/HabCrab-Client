@@ -1,9 +1,12 @@
 import { Button } from "react-bootstrap";
-import { CreateLinkEvent } from "../../../../../api";
+import { CreateLinkEvent, SendMessageComposer } from "../../../../../api";
 import { useQuestById } from "../../../../../hooks/crab/quests/useQuestById";
 import { FaCaretLeft, FaSpinner } from "react-icons/fa";
-import { QuestEditor } from "./QuestEditor";
+import { QuestDTO, QuestEditor } from "./QuestEditor";
 import { Text } from "../../../../../common";
+import { QuestData, QuestDataEvent, QuestUpdateComposer } from "@nitrots/nitro-renderer";
+import { useMessageEvent } from "../../../../../hooks";
+import { toast } from "react-toastify";
 
 export interface QuestsViewOneProps {
   questId: number;
@@ -12,13 +15,20 @@ export interface QuestsViewOneProps {
 export function QuestsViewOne({ questId }: QuestsViewOneProps) {
   const quest = useQuestById(questId);
 
+  useMessageEvent(QuestDataEvent, (event: QuestDataEvent) => {
+    const eventData: QuestData = event.getParser().data;
+    if (!quest) return;
+    if (eventData.id !== questId) return;
+    toast.success(`Updated quest #${eventData.id} ${eventData.title}`);
+    CreateLinkEvent(`mod-tools/manage-quests/quests/view/${eventData.id}`);
+  });
+
   if (!quest) {
     return <FaSpinner className="fa-spin" />;
   }
 
-  async function onSave() {
-    try {
-    } catch (e: any) {}
+  async function onSave(dto: QuestDTO) {
+    SendMessageComposer(new QuestUpdateComposer(questId, dto.parentId, dto.title, dto.description));
   }
 
   return (
@@ -32,7 +42,7 @@ export function QuestsViewOne({ questId }: QuestsViewOneProps) {
           Go Back
         </Button>
       </div>
-      <QuestEditor onSave={onSave} />
+      <QuestEditor defaultDTO={quest} onSave={onSave} />
     </>
   );
 }
