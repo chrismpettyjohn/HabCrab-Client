@@ -14,6 +14,7 @@ import { QuestsViewOne } from "./quests/QuestsViewOne";
 import { QuestsCreate } from "./quests/QuestsCreate";
 import { TrackersGrid } from "./trackers/TrackersGrid";
 import { TrackersViewOne } from "./trackers/TrackersViewOne";
+import { TrackersCreate } from "./trackers/TrackersCreate";
 
 const QUEST_TABS: Array<{ path: string; title: string }> = [
   {
@@ -47,7 +48,7 @@ export function ModToolsQuestView() {
               setView(<QuestsViewOne questId={questId} />);
               return;
             case "trackers/create":
-              setView(<QuestsCreate />);
+              setView(<TrackersCreate />);
               return;
             case "trackers/view":
               const trackerId = Number(parts[4]);

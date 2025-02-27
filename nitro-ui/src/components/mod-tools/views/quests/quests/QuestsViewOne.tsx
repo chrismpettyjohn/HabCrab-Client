@@ -23,7 +23,7 @@ export function QuestsViewOne({ questId }: QuestsViewOneProps) {
     CreateLinkEvent(`mod-tools/manage-quests/quests/view/${eventData.id}`);
   });
 
-  useMessageEvent(QuestListEvent, (event: QuestListEvent) => {
+  useMessageEvent(QuestListEvent, () => {
     toast.success(`Deleted quest #${questId}`);
     CreateLinkEvent(`mod-tools/manage-quests/quests`);
   });
