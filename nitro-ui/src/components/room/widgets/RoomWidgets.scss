@@ -5,7 +5,7 @@
 
     .nitro-room-tools {
         background: $primary;
-        box-shadow: inset 0px 5px lighten(rgba($dark, .6), 2.5), inset 0 -4px darken(rgba($dark, .6), 4);
+        box-shadow: inset 0px 5px lighten(rgba($primary, .6), 2.5), inset 0 -4px darken(rgba($primary, .6), 4);
         border-top-right-radius: $border-radius;
         border-bottom-right-radius: $border-radius;
         transition: all .2s ease;
@@ -47,7 +47,7 @@
 
     .nitro-room-tools-info {
         background: $primary;
-        box-shadow: inset 0px 5px lighten(rgba($dark, .6), 2.5), inset 0 -4px darken(rgba($dark, .6), 4);
+        box-shadow: inset 0px 5px lighten(rgba($primary, .6), 2.5), inset 0 -4px darken(rgba($primary, .6), 4);
         height: 96px;
         width: 340px;
     }
@@ -59,8 +59,8 @@
     left: 50%;
     transform: translateX(-50%);
     font-size: large;
-    background: rgba($dark, 0.95);
-    box-shadow: inset 0px 5px lighten(rgba($dark, .6), 2.5), inset 0 -4px darken(rgba($dark, .6), 4);
+    background: rgba($primary, 0.95);
+    box-shadow: inset 0px 5px lighten(rgba($primary, .6), 2.5), inset 0 -4px darken(rgba($primary, .6), 4);
     border-radius: $border-radius;
     transition: all 0.2s ease;
     z-index: $quiz-zindex;

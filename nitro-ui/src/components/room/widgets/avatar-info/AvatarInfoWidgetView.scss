@@ -37,7 +37,7 @@
         z-index: $infostand-zindex;
         pointer-events: auto;
         background: $primary;
-        box-shadow: inset 0px 5px lighten(rgba($dark, .6), 2.5), inset 0 -4px darken(rgba($dark, .6), 4);
+        box-shadow: inset 0px 5px lighten(rgba($primary, .6), 2.5), inset 0 -4px darken(rgba($primary, .6), 4);
 
         .form-control-sm {
             height: 25px;

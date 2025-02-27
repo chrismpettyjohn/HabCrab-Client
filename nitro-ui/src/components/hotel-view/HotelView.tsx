@@ -27,7 +27,7 @@ export const HotelView: FC<{}> = (props) => {
     <div className="nitro-hotel-view">
       <iframe
         style={{ height: "150%", width: "150%", objectFit: "contain", pointerEvents: "none", transform: "translate(-18%, -18%)" }}
-        src="https://www.youtube.com/embed/LDU_Txk06tM?si=4FxQ64NueQs0qkqK&autoplay=1"
+        src="https://www.youtube.com/embed/LDU_Txk06tM?si=4FxQ64NueQs0qkqK&autoplay=1&start=45"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>
     </div>

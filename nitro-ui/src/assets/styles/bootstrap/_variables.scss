@@ -93,7 +93,6 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 
 $light:         #DFDFDF !default;
-$dark:          rgba(28,28,32,.9803921568627451) !default;
 $light-dark:    $gray-800 !default;
 // scss-docs-end theme-color-variables
 
@@ -122,7 +121,7 @@ $theme-colors: (
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
-  "dark":       $dark,
+  "dark":       $primary,
   "light-dark": $light-dark,
   "white":      $white,
   "black":      $black,
@@ -773,7 +772,7 @@ $table-variants: (
   "warning":    shift-color($warning, $table-bg-scale),
   "danger":     shift-color($danger, $table-bg-scale),
   "light":      $light,
-  "dark":       $dark,
+  "dark":       $primary,
 ) !default;
 // scss-docs-end table-loop
 
