@@ -12,28 +12,23 @@ import { ILinkEventTracker } from "@nitrots/nitro-renderer";
 import { QuestsGrid } from "./quests/QuestsGrid";
 import { QuestsViewOne } from "./quests/QuestsViewOne";
 import { QuestsCreate } from "./quests/QuestsCreate";
+import { TrackersGrid } from "./trackers/TrackersGrid";
+import { TrackersViewOne } from "./trackers/TrackersViewOne";
 
-const QUEST_TABS: Array<{ path: string; title: string; children: JSX.Element }> = [
+const QUEST_TABS: Array<{ path: string; title: string }> = [
   {
     path: "mod-tools/manage-quests/quests",
     title: "Quests",
-    children: <QuestsGrid />,
   },
   {
     path: "mod-tools/manage-quests/trackers",
     title: "Trackers",
-    children: <p>Trackers</p>,
-  },
-  {
-    path: "mod-tools/manage-quests/tasks",
-    title: "Tasks",
-    children: <p>Tasks</p>,
   },
 ];
 
 export function ModToolsQuestView() {
   const [path, setPath] = useState("");
-  const [view, setView] = useState(QUEST_TABS[0].children);
+  const [view, setView] = useState(<QuestsGrid />);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -51,6 +46,13 @@ export function ModToolsQuestView() {
               const questId = Number(parts[4]);
               setView(<QuestsViewOne questId={questId} />);
               return;
+            case "trackers/create":
+              setView(<QuestsCreate />);
+              return;
+            case "trackers/view":
+              const trackerId = Number(parts[4]);
+              setView(<TrackersViewOne trackerId={trackerId} />);
+              return;
           }
 
           return;
@@ -60,16 +62,13 @@ export function ModToolsQuestView() {
           switch (parts[2]) {
             case "toggle":
               setVisible((_) => !_);
-              setView(QUEST_TABS[0].children);
-              return;
-            case "tasks":
-              setView(QUEST_TABS[2].children);
+              setView(<QuestsGrid />);
               return;
             case "trackers":
-              setView(QUEST_TABS[3].children);
+              setView(<TrackersGrid />);
               return;
             case "quests":
-              setView(QUEST_TABS[0].children);
+              setView(<QuestsGrid />);
               return;
           }
         }

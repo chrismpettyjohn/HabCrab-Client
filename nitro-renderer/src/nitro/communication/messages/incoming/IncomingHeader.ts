@@ -474,4 +474,6 @@ export class IncomingHeader {
   public static QUEST_DATA = 7002;
   public static TRACKER_LIST = 7003;
   public static TRACKER_DATA = 7004;
+  public static QUEST_TASK_LIST = 7005;
+  public static QUEST_TASK_DATA = 7006;
 }

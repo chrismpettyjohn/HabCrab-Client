@@ -1,3 +1,9 @@
+export * from "./quest-tasks/QuestTaskCreateComposer";
+export * from "./quest-tasks/QuestTaskDeleteComposer";
+export * from "./quest-tasks/QuestTaskGetAllComposer";
+export * from "./quest-tasks/QuestTaskGetByIdComposer";
+export * from "./quest-tasks/QuestTaskUpdateComposer";
+
 export * from "./quests/QuestCreateComposer";
 export * from "./quests/QuestDeleteComposer";
 export * from "./quests/QuestGetAllComposer";

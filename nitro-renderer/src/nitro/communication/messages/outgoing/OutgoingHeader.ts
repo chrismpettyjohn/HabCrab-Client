@@ -479,4 +479,10 @@ export class OutgoingHeader {
   public static TRACKER_DELETE = 7008;
   public static TRACKER_GET_ALL = 7009;
   public static TRACKER_GET_BY_ID = 7010;
+
+  public static QUEST_TASK_CREATE = 7011;
+  public static QUEST_TASK_UPDATE = 7012;
+  public static QUEST_TASK_DELETE = 7013;
+  public static QUEST_TASK_GET_ALL = 7014;
+  public static QUEST_TASK_GET_BY_ID = 7015;
 }

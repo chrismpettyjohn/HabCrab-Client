@@ -920,6 +920,13 @@ import {
   TrackerUpdateComposer,
   TrackerCreateComposer,
   TrackerGetByIdComposer,
+  QuestTaskCreateComposer,
+  QuestTaskUpdateComposer,
+  QuestTaskDeleteComposer,
+  QuestTaskGetAllComposer,
+  QuestTaskGetByIdComposer,
+  QuestTaskListEvent,
+  QuestTaskDataEvent,
 } from "./messages";
 
 export class NitroMessages implements IMessageConfiguration {
@@ -1482,6 +1489,8 @@ export class NitroMessages implements IMessageConfiguration {
     this._events.set(IncomingHeader.QUEST_DATA, QuestDataEvent);
     this._events.set(IncomingHeader.TRACKER_LIST, TrackerListEvent);
     this._events.set(IncomingHeader.TRACKER_DATA, TrackerDataEvent);
+    this._events.set(IncomingHeader.QUEST_TASK_LIST, QuestTaskListEvent);
+    this._events.set(IncomingHeader.QUEST_TASK_DATA, QuestTaskDataEvent);
   }
 
   private registerComposers(): void {
@@ -2092,6 +2101,12 @@ export class NitroMessages implements IMessageConfiguration {
     this._composers.set(OutgoingHeader.QUEST_DELETE, QuestDeleteComposer);
     this._composers.set(OutgoingHeader.QUEST_GET_ALL, QuestGetAllComposer);
     this._composers.set(OutgoingHeader.QUEST_GET_BY_ID, QuestGetByIdComposer);
+
+    this._composers.set(OutgoingHeader.QUEST_TASK_CREATE, QuestTaskCreateComposer);
+    this._composers.set(OutgoingHeader.QUEST_TASK_UPDATE, QuestTaskUpdateComposer);
+    this._composers.set(OutgoingHeader.QUEST_TASK_DELETE, QuestTaskDeleteComposer);
+    this._composers.set(OutgoingHeader.QUEST_TASK_GET_ALL, QuestTaskGetAllComposer);
+    this._composers.set(OutgoingHeader.QUEST_TASK_GET_BY_ID, QuestTaskGetByIdComposer);
 
     this._composers.set(OutgoingHeader.TRACKER_CREATE, TrackerCreateComposer);
     this._composers.set(OutgoingHeader.TRACKER_UPDATE, TrackerUpdateComposer);
