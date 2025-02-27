@@ -8,7 +8,6 @@ import { ModToolsRoomView } from "./views/room/ModToolsRoomView";
 import { ModToolsTicketsView } from "./views/tickets/ModToolsTicketsView";
 import { ModToolsUserChatlogView } from "./views/user/ModToolsUserChatlogView";
 import { ModToolsUserView } from "./views/user/ModToolsUserView";
-import { ModToolsTrackerView } from "./views/tracker/ModToolsTrackerView";
 import { ModToolsQuestView } from "./views/quests/ModToolsQuestView";
 
 export const ModToolsView: FC<{}> = (props) => {
@@ -176,9 +175,6 @@ export const ModToolsView: FC<{}> = (props) => {
             <Button gap={1} onClick={() => CreateLinkEvent("mod-tools/quests/toggle")} className="position-relative">
               <Base className="icon icon-quests position-absolute start-1" /> Manage Quests
             </Button>
-            <Button gap={1} onClick={() => CreateLinkEvent("mod-tools/trackers/toggle")} className="position-relative">
-              <Base className="icon icon-tracker position-absolute start-1" /> Manage Trackers
-            </Button>
           </NitroCardContentView>
         </NitroCardView>
       )}
@@ -199,7 +195,6 @@ export const ModToolsView: FC<{}> = (props) => {
           <ModToolsUserChatlogView key={userId} userId={userId} onCloseClick={() => CreateLinkEvent(`mod-tools/close-user-chatlog/${userId}`)} />
         ))}
       {isTicketsVisible && <ModToolsTicketsView onCloseClick={() => setIsTicketsVisible(false)} />}
-      <ModToolsTrackerView />
       <ModToolsQuestView />
     </>
   );
