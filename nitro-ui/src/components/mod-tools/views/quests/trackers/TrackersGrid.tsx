@@ -16,71 +16,7 @@ export function TrackersGrid() {
       <div className="mod-tools-quests">
         <div className="quest-container">
           {trackers.map((_) => (
-            <div className="quest" key={`Tracker_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/trackers/view/${_.id}`)}>
-              <Text bold fontSize={4}>
-                #{_.id} {_.title}
-              </Text>
-              <Text>{_.description}</Text>
-            </div>
-          ))}
-          {trackers.map((_) => (
-            <div className="quest" key={`Tracker_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/trackers/view/${_.id}`)}>
-              <Text bold fontSize={4}>
-                #{_.id} {_.title}
-              </Text>
-              <Text>{_.description}</Text>
-            </div>
-          ))}
-          {trackers.map((_) => (
-            <div className="quest" key={`Tracker_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/trackers/view/${_.id}`)}>
-              <Text bold fontSize={4}>
-                #{_.id} {_.title}
-              </Text>
-              <Text>{_.description}</Text>
-            </div>
-          ))}
-          {trackers.map((_) => (
-            <div className="quest" key={`Tracker_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/trackers/view/${_.id}`)}>
-              <Text bold fontSize={4}>
-                #{_.id} {_.title}
-              </Text>
-              <Text>{_.description}</Text>
-            </div>
-          ))}
-          {trackers.map((_) => (
-            <div className="quest" key={`Tracker_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/trackers/view/${_.id}`)}>
-              <Text bold fontSize={4}>
-                #{_.id} {_.title}
-              </Text>
-              <Text>{_.description}</Text>
-            </div>
-          ))}
-          {trackers.map((_) => (
-            <div className="quest" key={`Tracker_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/trackers/view/${_.id}`)}>
-              <Text bold fontSize={4}>
-                #{_.id} {_.title}
-              </Text>
-              <Text>{_.description}</Text>
-            </div>
-          ))}
-          {trackers.map((_) => (
-            <div className="quest" key={`Tracker_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/trackers/view/${_.id}`)}>
-              <Text bold fontSize={4}>
-                #{_.id} {_.title}
-              </Text>
-              <Text>{_.description}</Text>
-            </div>
-          ))}
-          {trackers.map((_) => (
-            <div className="quest" key={`Tracker_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/trackers/view/${_.id}`)}>
-              <Text bold fontSize={4}>
-                #{_.id} {_.title}
-              </Text>
-              <Text>{_.description}</Text>
-            </div>
-          ))}
-          {trackers.map((_) => (
-            <div className="quest" key={`Tracker_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/trackers/view/${_.id}`)}>
+            <div className="quest" key={`tracker_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/trackers/view/${_.id}`)}>
               <Text bold fontSize={4}>
                 #{_.id} {_.title}
               </Text>

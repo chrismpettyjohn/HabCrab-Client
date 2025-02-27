@@ -14,14 +14,16 @@ export function QuestsGrid() {
         </Button>
       </div>
       <div className="mod-tools-quests">
-        {quests.map((_) => (
-          <div className="quest" key={`quest_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/quests/view/${_.id}`)}>
-            <Text bold fontSize={4}>
-              #{_.id} {_.title}
-            </Text>
-            <Text>{_.description}</Text>
-          </div>
-        ))}
+        <div className="quest-container">
+          {quests.map((_) => (
+            <div className="quest" key={`quest_${_.id}`} onClick={() => CreateLinkEvent(`mod-tools/manage-quests/quests/view/${_.id}`)}>
+              <Text bold fontSize={4}>
+                #{_.id} {_.title}
+              </Text>
+              <Text>{_.description}</Text>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import { useQuestById } from "../../../../../hooks/crab/quests/useQuestById";
 import { FaCaretLeft, FaSpinner } from "react-icons/fa";
 import { QuestDTO, QuestEditor } from "./QuestEditor";
 import { Text } from "../../../../../common";
-import { QuestData, QuestDataEvent, QuestUpdateComposer } from "@nitrots/nitro-renderer";
+import { QuestData, QuestDataEvent, QuestDeleteComposer, QuestListEvent, QuestUpdateComposer } from "@nitrots/nitro-renderer";
 import { useMessageEvent } from "../../../../../hooks";
 import { toast } from "react-toastify";
 
@@ -23,12 +23,21 @@ export function QuestsViewOne({ questId }: QuestsViewOneProps) {
     CreateLinkEvent(`mod-tools/manage-quests/quests/view/${eventData.id}`);
   });
 
+  useMessageEvent(QuestListEvent, (event: QuestListEvent) => {
+    toast.success(`Deleted quest #${questId}`);
+    CreateLinkEvent(`mod-tools/manage-quests/quests`);
+  });
+
   if (!quest) {
     return <FaSpinner className="fa-spin" />;
   }
 
-  async function onSave(dto: QuestDTO) {
+  function onSave(dto: QuestDTO) {
     SendMessageComposer(new QuestUpdateComposer(questId, dto.parentId, dto.title, dto.description));
+  }
+
+  function onDelete() {
+    SendMessageComposer(new QuestDeleteComposer(questId));
   }
 
   return (
@@ -42,7 +51,7 @@ export function QuestsViewOne({ questId }: QuestsViewOneProps) {
           Go Back
         </Button>
       </div>
-      <QuestEditor defaultDTO={quest} onSave={onSave} />
+      <QuestEditor defaultDTO={quest} onDelete={onDelete} onSave={onSave} />
     </>
   );
 }

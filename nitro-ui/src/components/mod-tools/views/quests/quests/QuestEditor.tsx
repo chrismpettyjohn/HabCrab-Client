@@ -8,9 +8,10 @@ export type QuestDTO = Omit<QuestData, "id" | "createdAt">;
 export interface QuestEditorProps {
   defaultDTO?: QuestDTO;
   onSave(dto: QuestDTO): void;
+  onDelete?(): void;
 }
 
-export function QuestEditor({ defaultDTO, onSave }: QuestEditorProps) {
+export function QuestEditor({ defaultDTO, onDelete, onSave }: QuestEditorProps) {
   const [dto, setDTO] = useState<QuestDTO>({
     parentId: defaultDTO?.parentId ?? -1,
     title: defaultDTO?.title ?? "",
@@ -59,7 +60,14 @@ export function QuestEditor({ defaultDTO, onSave }: QuestEditorProps) {
         />
       </div>
       <br />
-      <div style={{ display: "flex", flex: 1, justifyContent: "flex-end" }}>
+      <div style={{ display: "flex", flex: 1, justifyContent: "space-between" }}>
+        <div>
+          {onDelete && (
+            <button className="btn btn-danger" type="button" onClick={onDelete}>
+              Delete
+            </button>
+          )}
+        </div>
         <button className="btn btn-success" disabled={!isValid} type="submit">
           Save
         </button>
