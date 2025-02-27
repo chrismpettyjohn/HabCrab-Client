@@ -172,7 +172,7 @@ export const ModToolsView: FC<{}> = (props) => {
             <Button gap={1} onClick={() => setIsTicketsVisible((prevValue) => !prevValue)} className="position-relative">
               <Base className="icon icon-tickets position-absolute start-1" /> Report Tool
             </Button>
-            <Button gap={1} onClick={() => CreateLinkEvent("mod-tools/quests/toggle")} className="position-relative">
+            <Button gap={1} onClick={() => CreateLinkEvent("mod-tools/manage-quests/toggle")} className="position-relative">
               <Base className="icon icon-quests position-absolute start-1" /> Manage Quests
             </Button>
           </NitroCardContentView>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DraggableWindowPosition,
   NitroCardContentView,
@@ -9,53 +9,72 @@ import {
 } from "../../../../common";
 import { AddEventLinkTracker, CreateLinkEvent, RemoveLinkEventTracker } from "../../../../api";
 import { ILinkEventTracker } from "@nitrots/nitro-renderer";
+import { QuestsGrid } from "./quests/QuestsGrid";
+import { QuestsViewOne } from "./quests/QuestsViewOne";
+import { QuestsCreate } from "./quests/QuestsCreate";
 
 const QUEST_TABS: Array<{ path: string; title: string; children: JSX.Element }> = [
   {
-    path: "mod-tools/quests/",
+    path: "mod-tools/manage-quests/quests",
     title: "Quests",
-    children: <p>Quests</p>,
+    children: <QuestsGrid />,
   },
   {
-    path: "mod-tools/quests/tasks",
-    title: "Tasks",
-    children: <p>Tasks</p>,
-  },
-  {
-    path: "mod-tools/quests/trackers",
+    path: "mod-tools/manage-quests/trackers",
     title: "Trackers",
     children: <p>Trackers</p>,
+  },
+  {
+    path: "mod-tools/manage-quests/tasks",
+    title: "Tasks",
+    children: <p>Tasks</p>,
   },
 ];
 
 export function ModToolsQuestView() {
-  const [tab, setTab] = useState(QUEST_TABS[0]);
+  const [path, setPath] = useState("");
+  const [view, setView] = useState(QUEST_TABS[0].children);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const linkTracker: ILinkEventTracker = {
       linkReceived: (url: string) => {
+        setPath(url);
         const parts = url.split("/");
 
-        if (parts.length < 3) return;
+        if (parts.length > 3) {
+          switch (`${parts[2]}/${parts[3]}`) {
+            case "quests/create":
+              setView(<QuestsCreate />);
+              return;
+            case "quests/view":
+              const questId = Number(parts[4]);
+              setView(<QuestsViewOne questId={questId} />);
+              return;
+          }
 
-        switch (parts[2]) {
-          case "":
-            setTab(QUEST_TABS[0]);
-            return;
-          case "toggle":
-            setVisible((_) => !_);
-            setTab(QUEST_TABS[0]);
-            return;
-          case "tasks":
-            setTab(QUEST_TABS[1]);
-            return;
-          case "trackers":
-            setTab(QUEST_TABS[2]);
-            return;
+          return;
+        }
+
+        if (parts.length === 3) {
+          switch (parts[2]) {
+            case "toggle":
+              setVisible((_) => !_);
+              setView(QUEST_TABS[0].children);
+              return;
+            case "tasks":
+              setView(QUEST_TABS[2].children);
+              return;
+            case "trackers":
+              setView(QUEST_TABS[3].children);
+              return;
+            case "quests":
+              setView(QUEST_TABS[0].children);
+              return;
+          }
         }
       },
-      eventUrlPrefix: "mod-tools/quests",
+      eventUrlPrefix: "mod-tools/manage-quests",
     };
 
     AddEventLinkTracker(linkTracker);
@@ -69,15 +88,15 @@ export function ModToolsQuestView() {
     <NitroCardView className="nitro-mod-tools-quest" theme="primary-slim" windowPosition={DraggableWindowPosition.TOP_LEFT} style={{ width: 600 }}>
       <NitroCardHeaderView headerText="Manage Quests" onCloseClick={() => setVisible(false)} />
       <NitroCardTabsView>
-        {QUEST_TABS.map((_, index) => {
+        {QUEST_TABS.map((_) => {
           return (
-            <NitroCardTabsItemView key={`quest_tab_${_.path}`} isActive={tab === _} onClick={() => CreateLinkEvent(_.path)}>
+            <NitroCardTabsItemView key={`quest_tab_${_.path}`} isActive={path.includes(_.path)} onClick={() => CreateLinkEvent(_.path)}>
               {_.title}
             </NitroCardTabsItemView>
           );
         })}
       </NitroCardTabsView>
-      <NitroCardContentView className="h-100">{tab?.children}</NitroCardContentView>
+      <NitroCardContentView className="h-100">{view}</NitroCardContentView>
     </NitroCardView>
   );
 }

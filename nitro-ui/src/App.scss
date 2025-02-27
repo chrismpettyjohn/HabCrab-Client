@@ -107,3 +107,15 @@ $nitro-calendar-height: 400px;
     box-shadow: none;
     padding: 8px;
 }
+
+input, .form-control {
+    background: $primary;
+    color: #fff; 
+
+    &:disabled {
+        background: darken($primary, 15%); 
+        cursor: not-allowed;
+        opacity: 0.7; 
+    }
+}
+
