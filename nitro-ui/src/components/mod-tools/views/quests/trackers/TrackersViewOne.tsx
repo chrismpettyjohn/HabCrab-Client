@@ -15,18 +15,6 @@ export interface TrackersViewOneProps {
 export function TrackersViewOne({ trackerId }: TrackersViewOneProps) {
   const tracker = useTrackerById(trackerId);
 
-  if (!tracker) {
-    return <FaSpinner className="fa-spin" />;
-  }
-
-  function onSave(dto: TrackerDTO) {
-    SendMessageComposer(new TrackerUpdateComposer(trackerId, dto.key, dto.title, dto.description));
-  }
-
-  function onDelete() {
-    SendMessageComposer(new TrackerDeleteComposer(trackerId));
-  }
-
   useMessageEvent(TrackerDataEvent, (event: TrackerDataEvent) => {
     const eventData: TrackerData = event.getParser().data;
     if (!tracker) return;
@@ -39,6 +27,18 @@ export function TrackersViewOne({ trackerId }: TrackersViewOneProps) {
     toast.success(`Deleted tracker #${trackerId}`);
     CreateLinkEvent(`mod-tools/manage-quests/trackers`);
   });
+
+  if (!tracker) {
+    return <FaSpinner className="fa-spin" />;
+  }
+
+  function onSave(dto: TrackerDTO) {
+    SendMessageComposer(new TrackerUpdateComposer(trackerId, dto.key, dto.title, dto.description));
+  }
+
+  function onDelete() {
+    SendMessageComposer(new TrackerDeleteComposer(trackerId));
+  }
 
   return (
     <>
