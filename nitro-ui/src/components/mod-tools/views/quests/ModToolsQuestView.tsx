@@ -87,7 +87,7 @@ export function ModToolsQuestView() {
 
   return (
     <NitroCardView className="nitro-mod-tools-quest" theme="primary-slim" windowPosition={DraggableWindowPosition.TOP_LEFT} style={{ width: 600 }}>
-      <NitroCardHeaderView headerText="Manage Quests" onCloseClick={() => setVisible(false)} />
+      <NitroCardHeaderView onCloseClick={() => setVisible(false)} />
       <NitroCardTabsView>
         {QUEST_TABS.map((_) => {
           return (

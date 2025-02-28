@@ -46,7 +46,7 @@ export function TrackersViewOne({ trackerId }: TrackersViewOneProps) {
         <Text bold fontSize={3}>
           Edit Tracker
         </Text>
-        <Button variant="secondary" onClick={() => CreateLinkEvent("mod-tools/manage-trackers/trackers")}>
+        <Button variant="secondary" onClick={() => CreateLinkEvent("mod-tools/manage-quests/trackers")}>
           <FaCaretLeft style={{ marginRight: 8 }} />
           Go Back
         </Button>
