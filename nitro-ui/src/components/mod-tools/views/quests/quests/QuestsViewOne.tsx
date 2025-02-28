@@ -7,6 +7,7 @@ import { Text } from "../../../../../common";
 import { QuestData, QuestDataEvent, QuestDeleteComposer, QuestListEvent, QuestUpdateComposer } from "@nitrots/nitro-renderer";
 import { useMessageEvent } from "../../../../../hooks";
 import { toast } from "react-toastify";
+import { QuestTasksList } from "./QuestTasksList";
 
 export interface QuestsViewOneProps {
   questId: number;
@@ -52,6 +53,7 @@ export function QuestsViewOne({ questId }: QuestsViewOneProps) {
         </Button>
       </div>
       <QuestEditor defaultDTO={quest} onDelete={onDelete} onSave={onSave} />
+      <QuestTasksList quest={quest} />
     </>
   );
 }

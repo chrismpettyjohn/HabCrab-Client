@@ -18,15 +18,9 @@
         bottom: 80px;
         display: flex;
         justify-content: center;
-        left: 0;
+        right: 10px;
         position: absolute;
-        width: 100%;
-    }
-
-    .nitro-chat-input-container {
-        width: 310px !important;
-        margin-left: 110px;
-        flex-grow: 0;
+        width: 300px;
     }
 
     .nitro-toolbar-friends {
