@@ -2,7 +2,9 @@
 
 @media (max-width: 768px) {
     .nitro-room-tools-container {
+        bottom: 20px;
         left: 10px;
+        height: 140px;
     }
     .nitro-room-tools-info {
         display: none !important;
@@ -24,6 +26,19 @@
     }
 
     .nitro-toolbar-friends {
-        display: none!important;
+        display: none !important;
     }
+
+    .nitro-infostand-container {
+        bottom: 165px;
+    }
+
+    .nitro-infostand-furni-view {
+        display: none !important;
+    }
+
+    .icon-crab {
+        display: none !important;
+    }
+
 }
